@@ -24,7 +24,7 @@ Of course, Wasabi is libre and open source, which means you have full control ov
 ::::details
 ### Who can use Wasabi?
 
-Every single line of code in Wasabi, the [wallet](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Gui), the [backend server](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Backend), the [tests](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Tests), the [packager](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Packager), the [library](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi), the [daemon](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Gui/CommandLine), the [api](https://wasabiwallet.io/swagger/), the [documentation](https://github.com/zkSNACKs/WasabiDoc/tree/master/docs) - has always been and will always be libre and open source under the [MIT license](https://github.com/zkSNACKs/WalletWasabi/blob/master/LICENSE.md).
+Every single line of code in Wasabi, the [wallet](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Gui), the [backend server](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Backend), the [tests](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Tests), the [packager](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Packager), the [library](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi), the [daemon](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Gui/CommandLine), the [api](https://wasabiwallet.io/swagger/), the [documentation](https://github.com/zkSNACKs/WasabiDoc) - has always been and will always be libre and open source under the [MIT license](https://github.com/zkSNACKs/WalletWasabi/blob/master/LICENSE.md).
 This means that anyone, yes, ANYONE can use Wasabi without permission, for any use case, free of charge.
 
 Wasabi is used by individuals to receive and spend every day payments, to manage their hardware wallet long term hodlings, and to CoinJoin their sats for added privacy.
@@ -89,6 +89,18 @@ It is crucial to understand that Wasabi is not a fool-proof solution if you negl
 :::
 
 :::details
+### Do I need to run Tor?
+
+All Wasabi network traffic goes via Tor by default - no need to set up Tor yourself.
+If you do already have Tor, and it is running, then Wasabi will try to use that first.
+
+You can turn off Tor in the `Settings`.
+Note that in this case you are still private, except when you CoinJoin and when you broadcast a transaction.
+In the first case, the coordinator would know the links between your inputs and outputs based on your IP address.
+In the second case, if you happen to broadcast a transaction of yours to a full node that is spying on you, it will know the link between your transaction and your IP address.
+:::
+
+:::details
 ### Why is Wasabi Bitcoin-only?
 
 There are countless reasons why it is the only logical choice to be [bitcoin-only](https://bitcoin-only.com).
@@ -100,11 +112,46 @@ Any line of code written to support a random shitcoin takes away scarce develope
 :::
 
 :::details
-### Why is the anonymity set 100??
+### Why is the anonymity set 100?
 
 Sufficient anonymity set is a hard question, that not yet enough research done to answer it definitively.
 The rough consensus among many privacy researchers is that an anonymity set above 50 could be considered sufficient.
 Furthermore our calculations have shown that with the liquidity of today’s mixers our mixing rounds would take 1 to 5 minutes with 100 anonymity set and 0.1 BTC fixed denomination.
+:::
+
+:::details
+### Is there a way to check Wasabi uptime status?
+
+Yes, you can check the status of Wasabi-related services and websites (like APIs, Backend, etc.) via [UptimeRobot Wasabi Status Page](https://stats.uptimerobot.com/YQqGyUL8A7).
+:::
+
+:::details
+### What software supplies the block filters that Wasabi uses?
+
+The zkSNACKs coordinator supplies the same set of filters to every client.
+This means you rely on the Wasabi backend providing you valid filters.
+But because you download the blocks from a random Bitcoin peer-to-peer node - or your own node - the coordinator cannot spy on which blocks you are interested in.
+Furthermore, the random node will only know which block is needed but it won't have any clue which transaction(s) belongs to the wallet.
+:::
+
+:::details
+### Is the Backend's (Coordinator) code open source?
+
+Yes, you can verify the code on [GitHub](https://github.com/zkSNACKs/WalletWasabi/tree/master/WalletWasabi.Backend).
+:::
+
+:::details
+### Is there an Android/iOs version?
+
+No, Wasabi and CoinJoin features require considerable computational power, not currently replicable on a smartphone.
+:::
+
+:::details
+### Where can I find Wasabi Wallet on social media?
+
+You can find us on [Twitter](https://twitter.com/wasabiwallet) and [Reddit](https://www.reddit.com/r/WasabiWallet/).
+For chat groups you can find us on [Slack](https://join.slack.com/t/tumblebit/shared_invite/enQtNjQ1MTQ2NzQ1ODI0LWIzOTg5YTM3YmNkOTg1NjZmZTQ3NmM1OTAzYmQyYzk1M2M0MTdlZDk2OTQwNzFiNTg1ZmExNzM0NjgzY2M0Yzg), [Telegram](https://t.me/WasabiWallet), [Riot](https://riot.im/app/#/room/#wasabiwallet:matrix.org) and [Keybase](https://keybase.io/team/wasabiwallet).
+
 :::
 
 ## For advanced Wasabikas
@@ -122,7 +169,7 @@ Though this would not affect the users who are able to successfully mix with oth
 The follow-up concern is the inverse of the above.
 It is possible that the server could *only* include one 'honest/real' coin in the mix and supply the other coins themselves.
 This would give a false sense of security, **but it would not worsen the existing privacy of the coin**.
-It would also be noticaable to all users excluding the user being targeted as their coins would not be mixed.
+It would also be noticeable to all users excluding the user being targeted as their coins would not be mixed.
 It has been argued that this 'attack' would be very costly in terms of fees because the number of coins being mixed is verifiable.
 Though it is true that fees would have to be paid to zkSNACKs every round, this does not matter if it is zkSNACKs that is acting maliciously (as they get the funds back).
 Typical rounds currently have <100 people per mix, with the minimum input being ~0.1 BTC with a fee of 0.003% per anonymity set.
@@ -147,10 +194,10 @@ Key dates:
 :::
 
 :::details
-### Who is contributing to Wasabi??
+### Who is contributing to Wasabi?
 
 There are many Wasabikas working with great effort and care to manifest this powerful tool of self defense.
-[Over 35 peers](https://github.com/zkSNACKs/WalletWasabi/graphs/contributors) have already contributed to the repository, and more and more supporters are joining the [dojo](/building-wasabi/Dojo.md).
+[Many peers](https://github.com/zkSNACKs/WalletWasabi/graphs/contributors) have already contributed to the repository, and more and more supporters are joining the [dojo](/building-wasabi/Dojo.md).
 Four of the main contributors are [Ádám Ficsor](https://github.com/nopara73) [co-founder and CTO of [zkSnacks Ltd](https://zksnacks.com/), co-author of the [zero link Bitcoin fungibility framework](https://github.com/nopara73/ZeroLink)], [Lucas Ontivero](https://github.com/lontivero) [lead engineer of [zkSnacks Ltd](https://zksnacks.com/)], [Dávid Molnár](https://github.com/molnard) [[zkSnacks Ltd](https://zksnacks.com/) employee], and [Dan Walmsley](https://github.com/danwalmsley) [maintainer of [Avalonia UI Framework](https://github.com/AvaloniaUI/Avalonia)].
 For an inclusive list of all the Wasabikas, not just the code developers, please visit the [dojo](/building-wasabi/Dojo.md).
 
@@ -228,12 +275,12 @@ For the complete explanation please read [ZeroLink: The Bitcoin Fungibility Fram
 ### What are the minimal requirements to run Wasabi?
 
 - 64-bit architecture
-- Windows 7 or newer
-- MacOS 10.12 or newer
-- For Linux it depends on the specific OS
+- Windows 7 SP1+
+- macOS 10.13+
+- Debian 9+
+- Ubuntu 16.04+
+- For other Linux distributions, it depends on the specific OS.
+
+Click [here](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1-supported-os.md) to check if .NET Core 3.1 supports your OS. 
 
 :::
-
-## Further Questions
-
-- What do peers say about Wasabi?

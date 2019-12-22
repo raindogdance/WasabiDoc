@@ -41,12 +41,18 @@ All the knowledge needed to give new contributors a swift start on their path to
 
 Most common questions answered with linked reference to the main documentation.
 
+### [Wasabi Glossary](https://github.com/zkSNACKs/WasabiDoc/tree/master/docs/glossary/)
+
+**Glossary.**
+
+Explanations of common words used in Wasabi and regarding Bitcoin privacy.
+
 ---
 
 ## Contribute to the Documentation
 
 [![Build Status](https://dev.azure.com/zkSNACKs/WasabiDoc/_apis/build/status/zkSNACKs.WasabiDoc?branchName=master)](https://dev.azure.com/zkSNACKs/WasabiDoc/_build/latest?definitionId=4&branchName=master)
-[![All Contributors](https://img.shields.io/badge/all_contributors-27-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-26-orange.svg?style=flat-square)](#contributors)
 
 Just like the Wasabi wallet software, this documentation is libre and open source under the [MIT license](LICENSE).
 Not only do we appreciate everyone's contribution, but we desperately need it!
@@ -64,12 +70,12 @@ Know that you do not need to understand/deal with VuePress at all in this case.
 
 - Wasabi [capitalized]
 - CoinJoin [capitalized, one word]
-- Every sentense must start in a new line.
+- Every sentence must start in a new line.
 - For a paragraph, add an `empty line` or `</br>` in the markdown.
 
 ### Reference files
 
-Please consider this repsoitory structure for hyperlinks, and use relative links whenever possible, for example:
+Please consider this repository structure for hyperlinks, and use relative links whenever possible, for example:
 
 ```
 [What is a CoinJoin?](FAQ-Introduction.md#what-is-a-coinjoin)
@@ -93,13 +99,13 @@ Youtube videos and playlists can be embedded via the following custom markdown t
 @[youtubePlaylist](PLAYLIST_ID)
 ```
 
-Optionally you can also specify the start position of a video in seconds: (e.g. starts at 100 seconds)
+Optionally you can also specify the start position of a video in seconds (e.g. starts at 100 seconds):
 
 ```md
 @[youtube](VIDEO_ID,100)
 ```
 
-And the index of the video of a playlist: (e.g. starts the third video)
+And the index of the video of a playlist (e.g. starts the third video):
 
 ```md
 @[youtubePlaylist](PLAYLIST_ID,VIDEO_ID)
@@ -109,7 +115,7 @@ And the index of the video of a playlist: (e.g. starts the third video)
 
 There are three types of text highlights that can be used to display different colored boxes.
 
-A green box displaying a [friendly tip](https://docs.wasabiwallet.io/using-wasabi/AddressReuse.html#_1-donations):
+A green box displaying a [friendly tip](https://docs.wasabiwallet.io/using-wasabi/AddressReuse.html):
 
 ```
 :::tip
@@ -117,7 +123,7 @@ foo
 :::
 ```
 
-A yellow box with a [cautious warning](https://docs.wasabiwallet.io/using-wasabi/AddressReuse.html#_1-donations):
+A yellow box with a [cautious warning](https://docs.wasabiwallet.io/using-wasabi/AddressReuse.html):
 
 ```
 :::warning
@@ -125,14 +131,13 @@ foo
 :::
 ```
 
-A red box with a [clear danger](https://docs.wasabiwallet.io/using-wasabi/AddressReuse.html#_1-donations), you can also add a title `foo` to any container:
+A red box with a [clear danger](https://docs.wasabiwallet.io/using-wasabi/RestoreElectrum.html), you can also add a title `foo` to any container:
 
 ```
 :::danger foo
 bar
 :::
 ```
-
 
 ### Frequently asked questions
 
@@ -146,7 +151,7 @@ answer answer answer.
 :::
 ```
 
-When you want to [highlight text](README.md#text-highlights) within a question, then you need to [next containers](https://github.com/markdown-it/markdown-it-container/issues/6#issuecomment-213789283). The outer `details` container has now four `::::`, and the inner `warning` container has still three `:::`.
+When you want to [highlight text](README.md#text-highlights) within a question, then you need to [nest containers](https://github.com/markdown-it/markdown-it-container/issues/6#issuecomment-213789283) by adding more `:` for the outer block start/end. The outer `details` container has now four `::::`, and the inner `warning` container has still three `:::`.
 
 ```
 ::::details
@@ -158,7 +163,13 @@ answer answer answer.
 answer answer answer.
 :::
 ::::
-````
+```
+
+### Variables
+
+To have a single place to maintain universal strings like the current Wasabi version number, we use variables in the Markdown (i.e.  `${currentVersion}`and `${zksnacksPublicKeyFingerprint}`).
+These variables are managed in [`docs/.vuepress/variables.js`](https://github.com/zkSNACKs/WasabiDoc/blob/master/docs/.vuepress/variables.js).
+Occurrences of `${variableName}` get substituted before the Markdown is processed.
 
 ### Thanks goes to the Wasabikas, Osu!
 
@@ -204,6 +215,8 @@ Checkout what each emoji means [here](https://allcontributors.org/docs/en/emoji-
   </tr>
   <tr>
     <td align="center"><a href="http://www.michaeltoth.me"><img src="https://avatars3.githubusercontent.com/u/1676164?v=4" width="100px;" alt="Michael Toth"/><br /><sub><b>Michael Toth</b></sub></a><br /><a href="https://github.com/zkSNACKs/WasabiDoc/commits?author=michaeltoth" title="Documentation">📖</a> <a href="#content-michaeltoth" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/PulpCattel"><img src="https://avatars0.githubusercontent.com/u/51127079?v=4" width="100px;" alt="Luke"/><br /><sub><b>Luke</b></sub></a><br /><a href="https://github.com/zkSNACKs/WasabiDoc/commits?author=PulpCattel" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://JonathanCross.com"><img src="https://avatars3.githubusercontent.com/u/5115470?v=4" width="100px;" alt="Jonathan Cross"/><br /><sub><b>Jonathan Cross</b></sub></a><br /><a href="https://github.com/zkSNACKs/WasabiDoc/commits?author=jonathancross" title="Documentation">📖</a></td>
   </tr>
 </table>
 
