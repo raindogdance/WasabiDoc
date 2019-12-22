@@ -154,6 +154,7 @@ There are also other node implementations different from Bitcoin Core, such as [
 
 Instead, if you prefer to use some dedicated hardware solutions, these are some of the most reliable projects:
 - [Raspiblitz](https://github.com/rootzoll/raspiblitz), a DIY project based on the Raspberry platform
+- [RaspiBolt](https://stadicus.github.io/RaspiBolt/), another Raspberry DIY node
 - [Nodl](https://www.nodl.it/), works out of the box and runs on a powerful Rockchip CPU
 - [myNode](https://mynodebtc.com/), a DIY project with optional paid versions
 - [Casa](https://keys.casa/lightning-bitcoin-node/), works out of the box on the Raspberry platform
@@ -166,7 +167,7 @@ Addresses being used more than once is very damaging to privacy because that lin
 The most private and secure way to use bitcoin is to send a brand new address to each person who pays you.
 After the received coins have been spent, the address should never be used again.
 Also, a brand new bitcoin address should be demanded when sending bitcoin.
-Wasabi has a user interface which discourages address reuse by removing from the GUI those addresses which have received a coin.
+Wasabi has a user interface which discourages address reuse by removing from the GUI addresses which have received a coin.
 
 It has been argued that the phrase "bitcoin address" was a bad name for this object because it implies it can be reused like an email address.
 A better name would be something like "bitcoin invoice".
